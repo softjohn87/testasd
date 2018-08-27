@@ -7,7 +7,35 @@
 <script>
  function time() {
   myDate = new Date();
-  Clock.innerHTML = myDate.toLocaleString();
+	
+  /* 
+     How about this?
+  */
+
+	Hour=myDate.getHours();
+	Min=myDate.getMinutes();
+	Sec=myDate.getSeconds();
+	
+  if(parseInt(Hour) < 10)
+    Hour='0'+Hour;
+  if(parseInt(Min) < 10)
+    Min='0'+Min;
+  if(parseInt(Sec) < 10)
+    Sec='0'+Sec;
+
+
+  Clock.innerHTML = myDate.getFullYear() +'년 '
+    + (myDate.getMonth()+1)+'월 '
+    + myDate.getDate()+'일 '
+    + Hour +'시 '
+    + Min +'분 '
+    + Sec +'초 ';
+
+  /*
+    myDate.getHours()
+    Clock.innerHTML = myDate.toLocaleString();
+  */
+
   setTimeout("time()", 1000);
  }
  onload = time;
